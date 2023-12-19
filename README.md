@@ -1,6 +1,8 @@
 # mega-cmd-server
 Docker container with [MegaCmd](https://mega.io/cmd) installed and configured to start `mega-cmd-server` for background synchronisation.
 
+Source code is in: [https://github.com/thomfab/docker-mega-cmd-server](https://github.com/thomfab/docker-mega-cmd-server)
+
 ## objective
 This image is aimed to be used on systems where MegaCmd is not supported (for example Truenas Scale), or to synchronize multiple accounts easily by launching several containers with different user ids.
 
@@ -22,6 +24,8 @@ Therefore, [gosu](https://github.com/tianon/gosu) is used and user and group ids
 Define one or more volumes for the folders to be synchronized on the host.
 
 For example: `--volume=/path/to/host/folder:/sync` and then the `/sync` folder can be used in the `mega-sync` command to create a synchronisation task.
+
+You can also define a volume to persist mega-cmd data: `--volume=/path/to/host/folder:/home/user/.megaCmd`
 
 ## usage
 
