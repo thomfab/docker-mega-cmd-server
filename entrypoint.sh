@@ -46,8 +46,11 @@ if [[ "x$EXISTING_USER" == "x" ]]; then
 
     echo "Create group $GROUP with id $GROUP_ID"
     groupadd -g $GROUP_ID $GROUP
+    echo "Create user $USER home directory"
+    mkdir -p /home/user
     echo "Create user $USER with id $USER_ID"
-    useradd --shell /bin/bash -u $USER_ID -g $GROUP_ID -o -c "" -m $USER
+    useradd --shell /bin/bash -u $USER_ID -g $GROUP_ID -o -c "" -M $USER
+    chown $USER:$GROUP /home/user
 else
     EXISTING_USER_ID=$(echo $EXISTING_USER | cut -d ":" -f 3)
     # check if container is start with same user id
